@@ -16,12 +16,7 @@ body
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
-.header
+.icon
 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px 100px;
-    background:black;
+	image-resolution: 20px 20px;
 }
