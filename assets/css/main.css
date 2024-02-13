@@ -10,13 +10,39 @@
 
 body
 {
-    background-image: url("../img/background.jpg");
+    background-color: rgb(30, 30, 30);
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
-.icon
+.header
 {
-	image-resolution: 20px 20px;
+    text-align: justify;
+    position: fixed;
+    height: 8em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 30px;
+}
+.header h1,
+header nav
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+.login
+{
+    display: inline-block;
+    width: 100%;
+    text-decoration-color: whitesmoke;
+    color: whitesmoke;
+    font-size: 30px;
+    vertical-align: middle;
+}
+.login:hover
+{
+    color: orange;
+    text-decoration-color: orange;
 }
