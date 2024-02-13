@@ -11,19 +11,27 @@
 
 <body>
     <div class="slidecontainer">
+        
         <h1 class="displaytext">Pelet Weight (Grams): <span id="wout"></span></h1>
-        <input type="range" min="0" max="10" value="3" class="slider" id="weight">
+        <input type="range" min="0" max="11" value="4" class="slider" id="weight">
+
         <h1 class="displaytext">FPS (Feet Per Second): <span id="fout"></span></h1>
-        <input type="range" min="1" max="500" value="310" class="slider" id="FPS">
+        <input type="range" min="1" max="650" value="310" class="slider" id="FPS">
+
         <h1 class="displaytext">Joules: <span id="jout"></span></h1>
+        <input type="range" min="0" max="10" value="1.42847714304" class="slider" id="joules">
+
         <script>
             /* --------------------------------- slider scripts --------------------------------- */
             var joutput = document.getElementById("jout");
+            var foutput = document.getElementById("fout");
+            var woutput = document.getElementById("wout");
             var ffps = 310;
+            var weighted = .32/1000;
+            var joules = 1.42847714304;
+
             /* ---------------------------------  weight slider --------------------------------- */
             var wslider = document.getElementById("weight");
-            var woutput = document.getElementById("wout");
-            var weighted = .32;
             woutput.innerHTML = .32;
             
             wslider.oninput = function() {
@@ -31,66 +39,77 @@
               {
                 case '0':
                     woutput.innerHTML = .20;
-                    weighted = .20;
+                    weighted = .20/1000;
                     break;
                 case '1':
                     woutput.innerHTML = .25;
-                    weighted = .25;                    
+                    weighted = .25/1000;                    
                     break;
                 case '2':
                     woutput.innerHTML = .28;
-                    weighted = .28;                    
+                    weighted = .28/1000;                    
                     break;
                 case '3':
-                    woutput.innerHTML = .32;
-                    weighted = .32;
+                    woutput.innerHTML = .30;
+                    weighted = .30/1000;
                     break;
                 case '4':
-                    woutput.innerHTML = .36;
-                    weighted = .36;
+                    woutput.innerHTML = .32;
+                    weighted = .32/1000;
                     break;
                 case '5':
-                    woutput.innerHTML = .40;
-                    weighted = .40;
+                    woutput.innerHTML = .36;
+                    weighted = .36/1000;
                     break;
                 case '6':
-                    woutput.innerHTML = .42;
-                    weighted = .42;
+                    woutput.innerHTML = .40;
+                    weighted = .40/1000;
                     break;
                 case '7':
-                    woutput.innerHTML = .45;
-                    weighted = .45;
+                    woutput.innerHTML = .42;
+                    weighted = .42/1000;
                     break;
                 case '8':
-                    woutput.innerHTML = .48;
-                    weighted = .48;
+                    woutput.innerHTML = .45;
+                    weighted = .45/1000;
                     break;
                 case '9':
-                    woutput.innerHTML = .50;
-                    weighted = .50;
+                    woutput.innerHTML = .48;
+                    weighted = .48/1000;
                     break;
                 case '10':
+                    woutput.innerHTML = .50;
+                    weighted = .50/1000;
+                    break;
+                case '11':
                     woutput.innerHTML = .52;
-                    weighted = .52;
+                    weighted = .52/1000;
                     break;
                 default:
                     woutput.innerHTML = .32;
-                    weighted = .32;
+                    weighted = .32/1000;
                     break;
               }
-              joutput.innerHTML = weighted * ffps;
+              joules = (((1/2) * weighted) * ((ffps * 0.3048) ** 2));
             }
 
             /* --- FPS slider --- */
-            var fslider = document.getElementById("FPS");
             var foutput = document.getElementById("fout");
-            foutput.innerHTML = fslider.value;
-            joutput.innerHTML = fslider.value * weighted;
+            foutput.innerHTML = ffps;
+            joules = (((1/2) * weighted) * ((fslider.value * 0.3048) ** 2));
 
             fslider.oninput = function() {
                 foutput.innerHTML = this.value;
                 ffps = this.value;
-                joutput.innerHTML = this.value * weighted;
+                joules = (((1/2) * weighted) * ((ffps * 0.3048) ** 2));
+            }
+
+            /* --- Joule Slider --- */
+            var jslider = document.getElementById("joules");
+            joutput.innerHTML = joules;
+
+            jslider.oninput = function() {
+                joutput.innerHTML = this.value;
             }
             </script>
     </div>

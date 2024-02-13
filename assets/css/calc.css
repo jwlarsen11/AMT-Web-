@@ -10,7 +10,7 @@
 
 body
 {
-    background-color: #4d4b4b;
+  background-color: #222222;
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -34,7 +34,7 @@ body
     appearance: none;
     width: 100%; /* Full-width */
     height: 25px; /* Specified height */
-    background: #4d4b4b; /* Grey background */
+    background: black; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -52,13 +52,21 @@ body
     appearance: none;
     width: 25px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: orange; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    background: #ff9100; /* Orange background */
+    cursor: crosshair; /* Cursor on hover */
   }
   
   .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
+    width: 50px; /* Set a specific slider handle width */
     height: 25px; /* Slider handle height */
-    background: orange; /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    background: #ff9100; /* Orange background */
+    cursor: crosshair; /* Cursor on hover */
   }
+
+  @media only screen and (max-width: 564px)
+{
+	.slider
+	{
+		padding: 20px;
+	}
+}
