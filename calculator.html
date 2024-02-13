@@ -19,16 +19,16 @@
         <input type="range" min="0" max="650" value="310" class="slider" id="FPS">
 
         <h1 class="displaytext">Kinetic Energy (Joules): <span id="jout"></span>J</h1>
-        <input type="range" min="0" max="10" step=".0001" value="1.4285" class="slider" id="jouler">
+        <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="jouler">
 
         <script>
             /* --------------------------------- slider scripts --------------------------------- */
             var joutput = document.getElementById("jout");
             var ffps = 310;
             var weighted = .32/1000;
-            var joules = 1.4285;
+            var joules = 1.43;
             var tffps = 310;
-            var tjoules = 1.4285;
+            var tjoules = 1.43;
             
 
             /* ---------------------------------  weight slider --------------------------------- */
@@ -93,8 +93,9 @@
                     weighted = .32/1000;
                     break;
                 }
+
                 joules = (((1/2) * weighted) * ((ffps * 0.3048) ** 2));
-                joutput.innerHTML = joules;
+                joutput.innerHTML = joules.toFixed(2);
                 ffps = (Math.sqrt((2*joules)/weighted)) * 3.28084;
                 ffps = ffps.toFixed(0);
                 foutput.innerHTML = ffps;
@@ -112,11 +113,7 @@
 
                 tjoules = joules;
                 joules = (((1/2) * weighted) * ((ffps * 0.3048) ** 2));
-                if(tjoules<joules)
-                    jslider.stepUp(joules-tjoules);
-                else
-                    jslider.stepDown(tjoules-joules);
-                joutput.innerHTML = joules.toFixed(4);
+                joutput.innerHTML = joules.toFixed(2);
             }
 
             /* --- Joule Slider --- */
@@ -126,14 +123,10 @@
             jslider.oninput = function() 
             {
                 joules = this.value;
-                joutput.innerHTML = joules
+                joutput.innerHTML = joules;
 
                 tffps = ffps;
                 ffps = (Math.sqrt((2*joules)/weighted)) * 3.28084;
-                if(tffps<ffps)
-                    fslider.stepUp(ffps-tffps);
-                else
-                    fslider.stepDown(tffps-ffps);
                 foutput.innerHTML = ffps.toFixed(0);
             }
         </script>
