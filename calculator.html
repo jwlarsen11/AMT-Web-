@@ -9,17 +9,53 @@
     <title>AMT - Joule Calculator</title>
 </head>
 
-<body>
-    <div class="slidecontainer">
-        
-        <h1 class="displaytext">Pelet Weight (Mass): <span id="wout"></span>g</h1>
-        <input type="range" min="0" max="11" value="4" class="slider" id="weight">
+<body onload="document.getElementById('defaultOpen').click();">
+    <div class="tab">
+        <button class="tablinks" onclick="openCalc(event,'Simple')" id="defaultOpen">Simple</button>
+        <button class="tablinks" onclick="openCalc(event,'Advanced')">Advanced</button>
+        <button class="tablinks" onclick="openCalc(event,'Precision')">Precision</button>
+    </div>
 
-        <h1 class="displaytext">Muzzle Velocity (FPS): <span id="fout"></span> FPS</h1>
-        <input type="range" min="0" max="650" value="310" class="slider" id="FPS">
+    <script>
+        function openCalc(evt, calcType) 
+        {
+            // Declare all variables
+            var i, tabcontent, tablinks;
 
-        <h1 class="displaytext">Kinetic Energy (Joules): <span id="jout"></span>J</h1>
-        <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="jouler">
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("slidecontainer");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(calcType).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+    <!-------------------------------------- Simple Calculator --------------------------------->
+    <div class="slidecontainer" id="Simple">
+        <div class="slidebox">
+            <h1 class="displaytext">Pelet Weight (Mass): <span id="wout"></span>g</h1>
+            <input type="range" min="0" max="11" value="4" class="slider" id="weight">
+            </div>
+    
+            <div class="slidebox">
+            <h1 class="displaytext">Muzzle Velocity (FPS): <span id="fout"></span> FPS</h1>
+            <input type="range" min="0" max="650" value="310" class="slider" id="FPS">
+            </div>
+    
+            <div class="slidebox">
+            <h1 class="displaytext">Kinetic Energy (Joules): <span id="jout"></span>J</h1>
+            <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="jouler">
+            </div>
 
         <script>
             /* --------------------------------- slider scripts --------------------------------- */
@@ -130,6 +166,139 @@
                 foutput.innerHTML = ffps.toFixed(0);
             }
         </script>
+    </div>
+
+
+    <!---------------------------------------- Advanced Calculator ------------------------------>
+    <div class="slidecontainer" id="Advanced">
+        <div class="slidebox">
+        <h1 class="displaytext">Pelet Weight (Mass): <span id="awout"></span>g</h1>
+        <input type="range" min="0" max="11" value="4" class="slider" id="aweight">
+        </div>
+
+        <div class="slidebox">
+        <h1 class="displaytext">Muzzle Velocity (FPS): <span id="afout"></span> FPS</h1>
+        <input type="range" min="0" max="650" value="310" class="slider" id="aFPS">
+        </div>
+
+        <div class="slidebox">
+        <h1 class="displaytext">Kinetic Energy (Joules): <span id="ajout"></span>J</h1>
+        <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="ajouler">
+        </div>
+
+        <script>
+            /* --------------------------------- slider scripts --------------------------------- */
+            var ajoutput = document.getElementById("ajout");
+            var affps = 310;
+            var aweighted = .32/1000;
+            var ajoules = 1.43;
+            var atffps = 310;
+            var atjoules = 1.43;
+            
+
+            /* ---------------------------------  weight slider --------------------------------- */
+            var awslider = document.getElementById("aweight");
+            var awoutput = document.getElementById("awout");
+            awoutput.innerHTML = aweighted*1000;
+            
+            awslider.oninput = function() 
+            {
+                switch(awslider.value) 
+                {
+                case '0':
+                    awoutput.innerHTML = .20;
+                    aweighted = .20/1000;
+                    break;
+                case '1':
+                    awoutput.innerHTML = .25;
+                    aweighted = .25/1000;                    
+                    break;
+                case '2':
+                    awoutput.innerHTML = .28;
+                    aweighted = .28/1000;                    
+                    break;
+                case '3':
+                    awoutput.innerHTML = .30;
+                    aweighted = .30/1000;
+                    break;
+                case '4':
+                    awoutput.innerHTML = .32;
+                    aweighted = .32/1000;
+                    break;
+                case '5':
+                    awoutput.innerHTML = .36;
+                    aweighted = .36/1000;
+                    break;
+                case '6':
+                    awoutput.innerHTML = .40;
+                    aweighted = .40/1000;
+                    break;
+                case '7':
+                    awoutput.innerHTML = .42;
+                    aweighted = .42/1000;
+                    break;
+                case '8':
+                    awoutput.innerHTML = .45;
+                    aweighted = .45/1000;
+                    break;
+                case '9':
+                    awoutput.innerHTML = .48;
+                    aweighted = .48/1000;
+                    break;
+                case '10':
+                    awoutput.innerHTML = .50;
+                    aweighted = .50/1000;
+                    break;
+                case '11':
+                    awoutput.innerHTML = .52;
+                    aweighted = .52/1000;
+                    break;
+                default:
+                    awoutput.innerHTML = .32;
+                    aweighted = .32/1000;
+                    break;
+                }
+
+                ajoules = (((1/2) * aweighted) * ((affps * 0.3048) ** 2));
+                ajoutput.innerHTML = ajoules.toFixed(2);
+                affps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
+                affps = affps.toFixed(0);
+                afoutput.innerHTML = affps;
+            }
+
+            /* --- FPS slider --- */
+            var afslider = document.getElementById("aFPS")
+            var afoutput = document.getElementById("afout");
+            afoutput.innerHTML = affps;
+
+            afslider.oninput = function() 
+            {
+                affps = this.value;
+                afoutput.innerHTML = affps;
+
+                atjoules = ajoules;
+                ajoules = (((1/2) * aweighted) * ((affps * 0.3048) ** 2));
+                ajoutput.innerHTML = ajoules.toFixed(2);
+            }
+
+            /* --- Joule Slider --- */
+            var ajslider = document.getElementById("ajouler");
+            ajoutput.innerHTML = ajoules;
+
+            ajslider.oninput = function() 
+            {
+                ajoules = this.value;
+                ajoutput.innerHTML = ajoules;
+
+                atffps = affps;
+                affps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
+                afoutput.innerHTML = affps.toFixed(0);
+            }
+        </script>
+    </div>
+    <div class="slidecontainer" id="Precision">
+        <!---some precise ass shit in here :3 --->
+        <h1>Coming soon</h1>
     </div>
 </body>
 
