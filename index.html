@@ -132,6 +132,7 @@
 
                 joules = (((1/2) * weighted) * ((ffps * 0.3048) ** 2));
                 joutput.innerHTML = joules.toFixed(2);
+                jslider.value = joules;
                 ffps = (Math.sqrt((2*joules)/weighted)) * 3.28084;
                 ffps = ffps.toFixed(0);
                 foutput.innerHTML = ffps;
@@ -150,6 +151,7 @@
                 tjoules = joules;
                 joules = (((1/2) * weighted) * ((ffps * 0.3048) ** 2));
                 joutput.innerHTML = joules.toFixed(2);
+                jslider.value = joules;
             }
 
             /* --- Joule Slider --- */
@@ -164,6 +166,7 @@
                 tffps = ffps;
                 ffps = (Math.sqrt((2*joules)/weighted)) * 3.28084;
                 foutput.innerHTML = ffps.toFixed(0);
+                fslider.value = ffps;
             }
         </script>
     </div>
@@ -261,9 +264,11 @@
 
                 ajoules = (((1/2) * aweighted) * ((affps * 0.3048) ** 2));
                 ajoutput.innerHTML = ajoules.toFixed(2);
+                ajslider.value = ajoules;
                 affps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
                 affps = affps.toFixed(0);
                 afoutput.innerHTML = affps;
+                afslider.value = affps;
             }
 
             /* --- FPS slider --- */
@@ -279,6 +284,7 @@
                 atjoules = ajoules;
                 ajoules = (((1/2) * aweighted) * ((affps * 0.3048) ** 2));
                 ajoutput.innerHTML = ajoules.toFixed(2);
+                ajslider.value = ajoules;
             }
 
             /* --- Joule Slider --- */
@@ -293,6 +299,7 @@
                 atffps = affps;
                 affps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
                 afoutput.innerHTML = affps.toFixed(0);
+                afslider.value = affps;
             }
         </script>
     </div>
