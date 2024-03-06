@@ -6,10 +6,6 @@ var afoutput = document.getElementById("afout"); //advanced fps slider numerical
 var awslider = document.getElementById("aweightSlider"); //advanced weight slider
 var awoutput = document.getElementById("awout"); //advanced weight slider numerical output
 
-var ftrue = document.getElementById("ftrue");
-var ltrue = document.getElementById("ltrue");
-var jtrue = document.getElementById("jtrue");
-
 //----- advanced calculation variables ------
 var amps; //mps derived from fps input
 var aAccelBase; //base acceleration calculated
@@ -20,7 +16,6 @@ var aEnergyBase; //base energy calculated for joule creep
 //----- advanced bb calculated variables ------
 var aBBAccel;
 var aBBTime;
-var aJouleCreep;
 
 //---- starting variables -------
 var aLength = 0.36; //length of inner barrel
@@ -131,7 +126,7 @@ ajslider.oninput = function()
     ajoules = this.value;
     ajoutput.innerHTML = ajoules;
 
-    /* afps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
+    afps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
     afoutput.innerHTML = afps.toFixed(0);
-    afslider.value = afps; */
+    afslider.value = afps; 
 }
