@@ -109,6 +109,7 @@ body
   color: #ff9100;
   vertical-align: middle;
   font-size: 80%;
+  min-width: 30px;
   text-align: center;
 }
 
@@ -117,7 +118,8 @@ body
   border: 2px solid #f55206;
   background-color: black;
   color: #ff9100;
-  width: 5%;
+  width: 8%;
+  min-width: 120px;
   vertical-align: middle;
   font-size: 80%;
   text-align: center;

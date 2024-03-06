@@ -1,5 +1,5 @@
 /* --------------------------------- slider scripts --------------------------------- */
-var joutput = document.getElementById("jout");
+var joutput = document.getElementById("sjout");
 var fps = 310;
 var weighted = .32/1000;
 var joules = 1.43;
@@ -8,8 +8,8 @@ var tjoules = 1.43;
 
 
 /* ---------------------------------  weight slider --------------------------------- */
-var wslider = document.getElementById("weightSlider");
-var woutput = document.getElementById("wout");
+var wslider = document.getElementById("sweightSlider");
+var woutput = document.getElementById("swout");
 woutput.innerHTML = weighted*1000;
 
 wslider.oninput = function() 
@@ -73,14 +73,11 @@ wslider.oninput = function()
     joules = (((1/2) * weighted) * ((fps * 0.3048) ** 2));
     joutput.innerHTML = joules.toFixed(2);
     jslider.value = joules;
-    fps = (Math.sqrt((2*joules)/weighted)) * 3.28084;
-    fps = fps.toFixed(0);
-    foutput.innerHTML = fps;
 }
 
 /* --- FPS slider --- */
-var fslider = document.getElementById("FpsSlider")
-var foutput = document.getElementById("fout");
+var fslider = document.getElementById("sFpsSlider")
+var foutput = document.getElementById("sfout");
 foutput.innerHTML = fps;
 
 fslider.oninput = function() 
@@ -95,7 +92,7 @@ fslider.oninput = function()
 }
 
 /* --- Joule Slider --- */
-var jslider = document.getElementById("jouler");
+var jslider = document.getElementById("sjouleSlider");
 joutput.innerHTML = joules;
 
 jslider.oninput = function() 

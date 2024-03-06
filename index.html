@@ -23,18 +23,18 @@
     <!-------------------------------------- Simple Calculator --------------------------------->
     <div class="slidecontainer" id="Simple">
         <div class="slidebox">
-            <h1 class="displaytext">Pelet Weight (Grams): <span id="wout"></span>g</h1>
-            <input type="range" min="0" max="11" value="4" class="slider" id="weightSlider">
+            <h1 class="displaytext">Pelet Weight (Grams): <span id="swout"></span>g</h1>
+            <input type="range" min="0" max="11" value="4" class="slider" id="sweightSlider">
         </div>
     
         <div class="slidebox">
-            <h1 class="displaytext">Muzzle Velocity (FPS): <span id="fout"></span>FPS</h1>
-            <input type="range" min="0" max="650" value="310" class="slider" id="FpsSlider">
+            <h1 class="displaytext">Muzzle Velocity (FPS): <span id="sfout"></span>FPS</h1>
+            <input type="range" min="0" max="650" value="310" class="slider" id="sFpsSlider">
         </div>
     
         <div class="slidebox">
-            <h1 class="displaytext">Kinetic Energy (Joules): <span id="jout"></span>J</h1>
-            <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="jouler">
+            <h1 class="displaytext">Kinetic Energy (Joules): <span id="sjout"></span>J</h1>
+            <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="sjouleSlider">
         </div>
 
         <script src="assets/scripts/SimpleCalculator.js"></script>
@@ -67,27 +67,27 @@
 
     <!--------------------------------------- Precision Calculator ------------------------------>
     <div class="slidecontainer" id="Precision">
-        <h1 class="displaytext">Kormit is a hoe</h1><br>
         <!---some precise ass shit in here :3 --->
         <h1 class="displaytext">Pelet Weight (Grams)</label>
         <select name="pweight" id="pweight" class="dropdownbox">
-            <option value="p2">0.20g</option>
-            <option value="p25">0.25g</option>
-            <option value="p28">0.28g</option>
-            <option value="p30">0.30g</option>
-            <option value="p32" selected="selected">0.32g</option>
-            <option value="p36">0.36g</option>
-            <option value="p40">0.40g</option>
-            <option value="p42">0.42g</option>
-            <option value="p45">0.45g</option>
-            <option value="p48">0.48g</option>
-            <option value="p50">0.50g</option>
-            <option value="p52">0.52g</option>
+            <option value=".20">0.20g</option>
+            <option value=".25">0.25g</option>
+            <option value=".28">0.28g</option>
+            <option value=".30">0.30g</option>
+            <option value=".32" selected="selected">0.32g</option>
+            <option value=".36">0.36g</option>
+            <option value=".40">0.40g</option>
+            <option value=".42">0.42g</option>
+            <option value=".45">0.45g</option>
+            <option value=".48">0.48g</option>
+            <option value=".50">0.50g</option>
+            <option value=".52">0.52g</option>
         </select><br>
         <h1 class="displaytext">Velocity (FPS)</label>
         <input type="number" id ="PFPS" name="pfps" size="3" required="TRUE" value="310" class="inputbox"><br>
         <h1 class="displaytext">Kinetic Energy (Joules)</label>
         <input type="number" id="pjoules" name="pjoules" size="4" value="1.43" class="inputbox"><br>
+        <script src="assets/scripts/PrecisionCalculator.js"></script>
     </div>
 </body>
 
