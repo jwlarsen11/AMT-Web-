@@ -7,7 +7,6 @@ var pweight = .32/1000;
 
 InputWeight.onchange = function()
 {
-    test.innerHTML = "yes";
     pweight = InputWeight.value/1000;
     pjoules = (((1/2) * pweight) * ((pfps * 0.3048) ** 2));
     pjoules = pjoules.toFixed(2);
