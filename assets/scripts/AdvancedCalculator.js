@@ -1,9 +1,7 @@
 //-------- html elements -----------------
 var ajoutput = document.getElementById("ajout"); //advanced joule slider numerical output
 var ajslider = document.getElementById("ajouler"); //advanced joule slider
-var alslider = document.getElementById("alengthSlider"); //advanced weight slider
-var aloutput = document.getElementById("alout"); //advanced weight slider numerical output
-var afslider = document.getElementById("aFpsSlider") //advanced fps slider
+var afslider = document.getElementById("aFpsSlider"); //advanced fps slider
 var afoutput = document.getElementById("afout"); //advanced fps slider numerical output
 var awslider = document.getElementById("aweightSlider"); //advanced weight slider
 var awoutput = document.getElementById("awout"); //advanced weight slider numerical output
@@ -90,8 +88,6 @@ awslider.oninput = function()
         aweighted = .32/1000;
         break;
     }
-
-    jtrue.innerHTML = "True";
     amps = afps * .305;
     aAccelBase = (0.5 * aLength * amps * amps);
     aTimeBase = (2 * aLength/amps);
@@ -103,13 +99,9 @@ awslider.oninput = function()
     ajslider.value = ajoules;
 
     
-    /*ajoules = (((1/2) * aweighted) * ((afps * 0.3048) ** 2));
-    ajoutput.innerHTML = ajoules.toFixed(2);
-    ajslider.value = ajoules;
-    afps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
-    afps = afps.toFixed(0);
-    afoutput.innerHTML = afps;
-    afslider.value = afps; */
+    var newfps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
+    afoutput.innerHTML = newfps.toFixed(0);
+    afslider.value = newfps;
 }
 
 
@@ -120,8 +112,6 @@ afslider.oninput = function()
     afps = this.value;
     afoutput.innerHTML = afps;
 
-    ftrue.innerHTML = "True";
-
     amps = afps * .305;
     aAccelBase = (0.5 * aLength * amps * amps);
     aTimeBase = (2 * aLength/amps);
@@ -132,24 +122,6 @@ afslider.oninput = function()
     ajoutput.innerHTML = ajoules.toFixed(2);
     ajslider.value = ajoules;
 
-}
-
-/* --- Length Slider --- */
-aloutput.innerHTML = aLength;
-alslider.oninput = function()
-{
-    aLength = this.value;
-    aloutput.innerHTML = aLength;
-
-    amps = afps * .305;
-    aAccelBase = (0.5 * aLength * amps * amps);
-    aTimeBase = (2 * aLength/amps);
-    aEnergyBase = (0.5 * aMassBase * amps * amps);
-    aBBAccel = (aMassBase * aAccelBase/aweighted);
-    aBBTime = (Math.sqrt(aAccelBase * aTimeBase * aTimeBase/aBBAccel));
-    ajoules = (aBBTime * aEnergyBase/aTimeBase);
-    ajoutput.innerHTML = ajoules.toFixed(2);
-    ajslider.value = ajoules;
 }
 
 /* --- Joule Slider --- */
@@ -158,8 +130,6 @@ ajslider.oninput = function()
 {
     ajoules = this.value;
     ajoutput.innerHTML = ajoules;
-
-    jtrue.innerHTML = "True";
 
     /* afps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
     afoutput.innerHTML = afps.toFixed(0);

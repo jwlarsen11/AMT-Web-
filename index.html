@@ -12,7 +12,7 @@
 <body onload="document.getElementById('defaultOpen').click();">
     <div class="tab">
         <button class="tablinks" onclick="openCalc(event,'Simple')" id="defaultOpen">Simple</button>
-        <button class="tablinks" onclick="openCalc(event,'Advanced')">Advanced</button>
+        <button class="tablinks" onclick="openCalc(event,'Advanced')">Creep</button>
         <button class="tablinks" onclick="openCalc(event,'Precision')">Precision</button>
     </div>
 
@@ -53,18 +53,9 @@
         </div>
 
         <div class="slidebox">
-            <h1 class="displaytext">Barrel Length (mm): <span id="alout"></span>mm</h1>
-            <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="alengthSlider">
-        </div>
-
-        <div class="slidebox">
             <h1 class="displaytext">Kinetic Energy (Joules): <span id="ajout"></span>J</h1>
             <input type="range" min="0" max="10" step=".01" value="1.43" class="slider" id="ajouler">
         </div>
-
-        <h1 id="ftrue">false</h1>
-        <h1 id="ltrue">false</h1>
-        <h1 id="jtrue">false</h1>
 
         <script src="assets/scripts/AdvancedCalculator.js"></script>
     </div>
