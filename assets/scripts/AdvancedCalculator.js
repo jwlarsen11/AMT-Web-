@@ -128,5 +128,5 @@ ajslider.oninput = function()
 
     afps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
     afoutput.innerHTML = afps.toFixed(0);
-    afslider.value = afps; 
+    afslider.value = afps;
 }

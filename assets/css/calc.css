@@ -53,6 +53,16 @@ body
     background: black; /* Grey background */
     outline: none; /* Remove outline */
   }
+
+  .pcswitch {
+    width: 10%;
+  }
+
+  .pcswitch::-webkit-slider-thumb {
+    width: 45% !important;
+    height: 60%;
+    padding-left: 2%;
+  }
   
   /* Mouse-over effects */
   .slider:hover {
@@ -75,6 +85,7 @@ body
     background: #f55206; /* Orange background */
     cursor: crosshair; /* Cursor on hover */
   }
+
 
   /* Style the tab */
 .tab {
