@@ -5,12 +5,14 @@ var afslider = document.getElementById("aFpsSlider"); //advanced fps slider
 var afoutput = document.getElementById("afout"); //advanced fps slider numerical output
 var awslider = document.getElementById("aweightSlider"); //advanced weight slider
 var awoutput = document.getElementById("awout"); //advanced weight slider numerical output
+var atwslider = document.getElementById("atweightSlider"); //advanced target weight slider
+var atwoutput = document.getElementById("atwout"); //advanced target weight slider numerical output
 
 //----- advanced calculation variables ------
 var amps; //mps derived from fps input
 var aAccelBase; //base acceleration calculated
 var aTimeBase; //base time calculated
-var aMassBase = .32/1000; //base mass for joule creep
+var aweighted = .32/1000; //base mass for joule creep
 var aEnergyBase; //base energy calculated for joule creep
 
 //----- advanced bb calculated variables ------
@@ -20,11 +22,11 @@ var aBBTime;
 //---- starting variables -------
 var aLength = 0.36; //length of inner barrel
 var afps = 310; //starting fps value
-var aweighted = .32/1000; //weighted bb input
+var anweighted = .32/1000; //weighted bb input
 var ajoules = 1.43; //final energy calculated including joule creep / joule input
 
 
-/* ---------------------------------  weight slider --------------------------------- */
+/* --------------------------------- starting weight slider --------------------------------- */
 awoutput.innerHTML = aweighted*1000; //weight output
 awslider.oninput = function() 
 {
@@ -83,21 +85,92 @@ awslider.oninput = function()
         aweighted = .32/1000;
         break;
     }
+
+    ajoules = (((1/2) * aweighted) * ((afps * 0.3048) ** 2));
+    ajoutput.innerHTML = ajoules.toFixed(2);
+    ajslider.value = ajoules;
+    
+    var newfps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
+    afoutput.innerHTML = newfps.toFixed(0);
+    afslider.value = newfps;
+}
+
+/* --------------------------------- target weight slider --------------------------------- */
+atwoutput.innerHTML = aweighted*1000; //weight output
+atwslider.oninput = function() 
+{
+    switch(atwslider.value) 
+    {
+    case '0':
+        atwoutput.innerHTML = .20;
+        anweighted = .20/1000;
+        break;
+    case '1':
+        atwoutput.innerHTML = .25;
+        anweighted = .25/1000;                    
+        break;
+    case '2':
+        atwoutput.innerHTML = .28;
+        anweighted = .28/1000;                    
+        break;
+    case '3':
+        atwoutput.innerHTML = .30;
+        anweighted = .30/1000;
+        break;
+    case '4':
+        atwoutput.innerHTML = .32;
+        anweighted = .32/1000;
+        break;
+    case '5':
+        atwoutput.innerHTML = .36;
+        anweighted = .36/1000;
+        break;
+    case '6':
+        atwoutput.innerHTML = .40;
+        anweighted = .40/1000;
+        break;
+    case '7':
+        atwoutput.innerHTML = .42;
+        anweighted = .42/1000;
+        break;
+    case '8':
+        atwoutput.innerHTML = .45;
+        anweighted = .45/1000;
+        break;
+    case '9':
+        atwoutput.innerHTML = .48;
+        anweighted = .48/1000;
+        break;
+    case '10':
+        atwoutput.innerHTML = .50;
+        anweighted = .50/1000;
+        break;
+    case '11':
+        atwoutput.innerHTML = .52;
+        anweighted = .52/1000;
+        break;
+    default:
+        atwoutput.innerHTML = .32;
+        anweighted = .32/1000;
+        break;
+    }
+
     amps = afps * .305;
     aAccelBase = (0.5 * aLength * amps * amps);
     aTimeBase = (2 * aLength/amps);
-    aEnergyBase = (0.5 * aMassBase * amps * amps);
-    aBBAccel = (aMassBase * aAccelBase/aweighted);
+    aEnergyBase = (0.5 * aweighted * amps * amps);
+    aBBAccel = (aweighted * aAccelBase/anweighted);
     aBBTime = (Math.sqrt(aAccelBase * aTimeBase * aTimeBase/aBBAccel));
     ajoules = (aBBTime * aEnergyBase/aTimeBase);
     ajoutput.innerHTML = ajoules.toFixed(2);
     ajslider.value = ajoules;
 
     
-    var newfps = (Math.sqrt((2*ajoules)/aweighted)) * 3.28084;
+    var newfps = (Math.sqrt((2*ajoules)/anweighted)) * 3.28084;
     afoutput.innerHTML = newfps.toFixed(0);
     afslider.value = newfps;
 }
+
 
 
 /* --- FPS slider --- */
@@ -107,16 +180,9 @@ afslider.oninput = function()
     afps = this.value;
     afoutput.innerHTML = afps;
 
-    amps = afps * .305;
-    aAccelBase = (0.5 * aLength * amps * amps);
-    aTimeBase = (2 * aLength/amps);
-    aEnergyBase = (0.5 * aMassBase * amps * amps);
-    aBBAccel = (aMassBase * aAccelBase/aweighted);
-    aBBTime = (Math.sqrt(aAccelBase * aTimeBase * aTimeBase/aBBAccel));
-    ajoules = (aBBTime * aEnergyBase/aTimeBase);
+    ajoules = (((1/2) * aweighted) * ((afps * 0.3048) ** 2));
     ajoutput.innerHTML = ajoules.toFixed(2);
     ajslider.value = ajoules;
-
 }
 
 /* --- Joule Slider --- */

@@ -21,6 +21,7 @@ var pEnergyBase; //base energy calculated for joule creep
 var pBBAccel;
 var pBBTime;
 
+/*
 creepS.onclick = function()
 {
     var newVal;
@@ -51,7 +52,7 @@ creepS.oninput = function()
         cout.innerHTML = "False";
     }
     this.value = newVal;
-}
+} */
 
 InputWeight.onchange = function()
 {
