@@ -5,8 +5,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="assets/css/login.css">
 	<title>AMT - Login</title>
+	<script>
+	function login(event)
+	{
+		var username = document.getElementById('user').value;
+		var password = document.getElementById('pass').value;
+	
+		if(username == "Admin" || username == "NewUser")
+		{
+			if(password == "P4ssw0rd!" || password == "NewPass")
+			{
+				alert("Login Successful!");
+			}
+			else
+			{
+				alert("Incorrect Username or Password!");
+			}
+		}
+		else
+		{
+			alert("Incorrect Username or Password!");
+		}
+	}
+	</script>
 </head>
 <body>
+<form onsubmit="login(event)">
 	<div class="wrapper">
 		<div class="login_box">
 			<div class="login-header">
@@ -32,26 +56,13 @@
 				</div>
 			</div>
 			<div class="input_box">
-				<input type="submit" class="input-submit" value="Login" onclick="javascript:check(document.getElementById('pass').value, icehnuf8fi0qhxkgotbs.txt)">
+				<input type="submit" class="input-submit" value="Submit" onclick="javascript:check(document.getElementById('pass').value, icehnuf8fi0qhxkgotbs.txt)">
 			</div>
 			<div class="register">
 				<span>Don't have an account? <a href="#">Register</a></span>
 			</div>
 		</div>
 	</div>
-<h2 id="result" style="color: red;"></h2>
-<script>
-	var username = document.getElementById('user').value;
-	var password = document.getElementById('pass').value;
-	
-	if(username == "Admin" || username == "NewUser")
-	{
-		if(password == "P4ssw0rd!" || password == "NewPass")
-		{
-			document.getElementById('result').innerText = "Login Successful!";
-		}
-	}
-</script>
-
+</form>
 </body>
 </html>
